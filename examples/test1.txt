@@ -1,0 +1,6 @@
+A = B * C
+D = A + B
+A = D - C
+E = A * D
+D = E + A
+F = D - B
