@@ -1,0 +1,6 @@
+A = B + C
+D = A * B
+E = A - C
+F = D + E
+G = B * C
+H = G + F
