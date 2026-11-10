@@ -1,0 +1,11 @@
+A = B + C
+D = E + F
+G = H + I
+J = K + L
+M = A * D
+N = G * J
+P = M + N
+Q = A + G
+R = D + J
+S = Q + R
+T = P + S

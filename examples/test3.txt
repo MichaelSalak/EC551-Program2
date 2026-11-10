@@ -1,0 +1,10 @@
+A = B + C
+D = A * E
+F = D + G
+H = F - I
+J = B + K
+L = J * M
+N = B - C
+P = N + Q
+R = H + L
+S = R + P

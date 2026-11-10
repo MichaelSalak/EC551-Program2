@@ -1,6 +1,7 @@
 # EC551-Program2
 
-run: python main.py examples/test1.txt --export-ssa output_ssa.txt
+run: 
+python main.py examples/test3.txt --schedule constrained-asap --add 2 --sub 1 --mul 1 --export-ssa output_ssa.txt
 
 
 notes
