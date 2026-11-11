@@ -1,6 +1,9 @@
 import argparse
 from parser import parse_equations, convert_to_ssa, format_equation, export_ssa
 from dag import construct_dag, print_dag
+from rtl_gen import build_plan, write_verilog
+from tb_gen import write_testbench
+from wrapper_gen import write_wrapper
 from scheduler import (schedule_asap, schedule_alap, schedule_constrained_asap, 
                        schedule_constrained_alap, schedule_custom, print_schedule)
 
@@ -43,7 +46,7 @@ if __name__ == "__main__":
         help="Number of available multipliers (default: 1)"
     )
 
-    # Select which schedule is exported for RTL generation
+    # select which schedule is exported for RTL generation
     parser.add_argument(
         "--schedule",
         choices=[
@@ -133,3 +136,9 @@ if __name__ == "__main__":
 
     # select schedule for RTL generation
     selected_schedule = schedules[args.schedule]
+
+    # generate the Verilog design, testbench, and board wrapper from the selected schedule
+    plan = build_plan(dag, selected_schedule)
+    write_verilog(plan, dag, "synth_top", "synth_top.v")
+    write_testbench(plan, dag, ssa_equations, "synth_top", "testbench.v", {})
+    write_wrapper(plan, dag, "synth_top", "composite_system.v", "generated_config.vh")
